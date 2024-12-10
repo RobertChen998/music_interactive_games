@@ -20,7 +20,8 @@ except Exception as e:
     exit()
 
 # init camera
-cap = cv2.VideoCapture(0)
+#cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1) # 1 is for usb camera
 if not cap.isOpened():
     print("Camera is not opened, please check the connection.")
     exit()
