@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import serial
 import time
+import struct
 
 # ================ define the box's top-left and bottom-right coordinates ================ 
 x1, y1 = 0, 0
@@ -91,9 +92,9 @@ while True:
 
         # Print concatenated coordinates and send to serial port
         print(f"Region1: {region1_point}, Region2: {region2_point}")
-        data = f"{region1_point[0]},{region1_point[1]},{region2_point[0]},{region2_point[1]}\n"
-        ser.write(data.encode('utf-8'))
-
+        # data = f"{region1_point[0]},{region1_point[1]},{region2_point[0]},{region2_point[1]}\n"
+        data = struct.pack('iiii', region1_point[0], region1_point[1], region2_point[0], region2_point[1])
+        ser.write(data) 
         # Display the output frame with detected red points
         cv2.imshow('Red Points Detection', output_frame)
 
@@ -105,23 +106,3 @@ while True:
     cap.release()
     cv2.destroyAllWindows()
     ser.close()
-    # print red points coordinates and send to serial port
-    if red_points:
-        print("Red point coordinates:", red_points)
-        for point in red_points:
-            # convert to string and send to serial port
-            data = f"{point[0]},{point[1]}\n"
-            ser.write(data.encode('utf-8'))
-
-            # ================== modify the frequency according to your own situation =================  
-            time.sleep(1 / 30)  
-
-    cv2.imshow('Red Points Detection', output_frame)
-
-    # put 'q' to exit
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-cap.release()
-cv2.destroyAllWindows()
-ser.close()
