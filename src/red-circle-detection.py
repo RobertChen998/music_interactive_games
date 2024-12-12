@@ -9,20 +9,20 @@ x1, y1 = 0, 0
 x2, y2 = 26, 13
 
 # init serial port
-# try:
-# # ================ modify the port number according to your own situation ================
-#     ser = serial.Serial(
-#         port='COM1',         
-#         baudrate=115200,     
-#         bytesize=serial.EIGHTBITS,
-#         parity=serial.PARITY_NONE,
-#         stopbits=serial.STOPBITS_ONE,
-#         timeout=1            
-#     )
-#     print("Serial port initialized")
-# except Exception as e:
-#     print(f"Error initializing serial port: {e}")
-#     exit()
+try:
+# ================ modify the port number according to your own situation ================
+    ser = serial.Serial(
+        port='COM1',         
+        baudrate=115200,     
+        bytesize=serial.EIGHTBITS,
+        parity=serial.PARITY_NONE,
+        stopbits=serial.STOPBITS_ONE,
+        timeout=1            
+    )
+    print("Serial port initialized")
+except Exception as e:
+    print(f"Error initializing serial port: {e}")
+    exit()
 
 # init camera
 #cap = cv2.VideoCapture(0)
@@ -94,7 +94,7 @@ while True:
         print(f"Region1: {region1_point}, Region2: {region2_point}")
         # data = f"{region1_point[0]},{region1_point[1]},{region2_point[0]},{region2_point[1]}\n"
         data = struct.pack('iiii', region1_point[0], region1_point[1], region2_point[0], region2_point[1])
-        # ser.write(data) 
+        ser.write(data) 
     # Display the output frame with detected red points
     cv2.imshow('Red Points Detection', output_frame)
 
@@ -105,4 +105,4 @@ while True:
 # Release resources
 cap.release()
 cv2.destroyAllWindows()
-# ser.close()
+ser.close()
