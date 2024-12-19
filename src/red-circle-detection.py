@@ -93,7 +93,7 @@ while True:
         # Print concatenated coordinates and send to serial port
         print(f"Region1: {region1_point}, Region2: {region2_point}")
         # data = f"{region1_point[0]},{region1_point[1]},{region2_point[0]},{region2_point[1]}\n"
-        data = struct.pack('iiii', region1_point[0], region1_point[1], region2_point[0], region2_point[1])
+        data = struct.pack('BBBB', region1_point[0], region1_point[1], region2_point[0], region2_point[1])
         ser.write(data) 
     # Display the output frame with detected red points
     cv2.imshow('Red Points Detection', output_frame)
