@@ -76,7 +76,7 @@ while True:
             cv2.putText(output_frame, f"({x},{y})", (x - 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
             
             # Scale the coordinates back to the defined box (x1, y1) -> (x2, y2)
-            scaled_x = int((x - x1) * (x2 - x1) / captured_frame.shape[1])
+            scaled_x = int((captured_frame.shape[1] - x - x1) * (x2 - x1) / captured_frame.shape[1])
             scaled_y = int((y - y1) * (y2 - y1) / captured_frame.shape[0])
             red_points.append((scaled_x, scaled_y))
 
@@ -93,7 +93,7 @@ while True:
         # Print concatenated coordinates and send to serial port
         print(f"Region1: {region1_point}, Region2: {region2_point}")
         # data = f"{region1_point[0]},{region1_point[1]},{region2_point[0]},{region2_point[1]}\n"
-        data = struct.pack('BBBB', region1_point[0], region1_point[1], region2_point[0], region2_point[1])
+        data = struct.pack('bbbb', region1_point[0], region1_point[1], region2_point[0], region2_point[1])
         ser.write(data) 
     # Display the output frame with detected red points
     cv2.imshow('Red Points Detection', output_frame)

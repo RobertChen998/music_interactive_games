@@ -132,7 +132,11 @@ def convert_jpg_to_verilog(image_path, output_file='image_vga.sv'):
 # Demonstration
 if __name__ == "__main__":
     # Uncomment and use with an actual image path
+<<<<<<< HEAD
     for i in range(1, 4):
+=======
+    for i in range(1, 3):
+>>>>>>> e5b1ac3a45e8834a31f0ed43089884bdc9f3ba80
         convert_png_to_jpg(f'circle{i}.png', f"circle{i}.jpg")
         convert_jpg_to_verilog(f"circle{i}.jpg", f"circle{i}.sv")
     # convert_png_to_jpg('score.png', 'score.jpg')
