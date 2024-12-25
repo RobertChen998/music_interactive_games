@@ -8,12 +8,13 @@ class VerilogImageConverter:
         Convert a JPG image to Verilog color palette and multiple pixel data modules
         """
         # Open and resize the image
-        self.original_image = Image.open(image_path)
+        self.original_image = Image.open(image_path).convert('RGB')
         self.image = self.original_image.resize((image_width, image_height), Image.LANCZOS)
         
         # Convert image to numpy array
         self.image_array = np.array(self.image)
-        
+        print(f"Image array shape: {self.image_array.shape}")
+
         # Initialize color palette and pixel indices
         self.color_palette = None
         self.pixel_color_indices = None
@@ -85,33 +86,9 @@ class VerilogImageConverter:
             "original"
         )
         
-        # Up layout (vertically flipped)
-        up_layout = self._generate_layout_module(
-            np.flipud(self.pixel_color_indices), 
-            "up"
-        )
-        
-        # Down layout (original)
-        down_layout = self._generate_layout_module(
-            np.fliplr(self.pixel_color_indices), 
-            "down"
-        )
-        
-        # Right layout (90 degree clockwise rotation)
-        right_layout = self._generate_layout_module(
-            np.rot90(self.pixel_color_indices, k=1), 
-            "right"
-        )
-        
-        # Left layout (90 degree counterclockwise rotation)
-        left_layout = self._generate_layout_module(
-            np.rot90(self.pixel_color_indices, k=3), 
-            "left"
-        )
-        
-        return original_layout, up_layout, down_layout, right_layout, left_layout
+        return original_layout
     
-    def save_verilog_modules(self, output_file='image_vga.v'):
+    def save_verilog_modules(self, output_file):
         """
         Save all Verilog modules to a file
         """
@@ -120,13 +97,26 @@ class VerilogImageConverter:
             f.write(self.generate_color_palette_module())
             f.write("\n")
             
-            # Write all layout modules
-            layouts = self.generate_all_layout_modules()
-            for layout in layouts:
-                f.write(layout)
-                f.write("\n")
+            # Write the original layout module
+            layout = self.generate_all_layout_modules()
+            f.write(layout)
+            f.write("\n")
         
         print(f"Verilog modules saved to {output_file}")
+
+def convert_png_to_jpg(png_path, jpg_path):
+    """
+    Convert a PNG image to JPG format.
+    
+    :param png_path: Path to the input PNG image
+    :param jpg_path: Path to save the output JPG image
+    """
+    # Open the PNG image
+    image = Image.open(png_path).convert('RGB')
+    
+    # Save the image in JPG format
+    image.save(jpg_path, 'JPEG')
+    print(f"Image saved as {jpg_path}")
 
 # Example usage function
 def convert_jpg_to_verilog(image_path, output_file='image_vga.sv'):
@@ -142,4 +132,8 @@ def convert_jpg_to_verilog(image_path, output_file='image_vga.sv'):
 # Demonstration
 if __name__ == "__main__":
     # Uncomment and use with an actual image path
-    convert_jpg_to_verilog('tank12.jpg', "test.sv")
+    for i in range(1, 3):
+        convert_png_to_jpg(f'circle{i}.png', f"circle{i}.jpg")
+        convert_jpg_to_verilog(f"circle{i}.jpg", f"circle{i}.sv")
+    # convert_png_to_jpg('score.png', 'score.jpg')
+    # convert_jpg_to_verilog('score.jpg', 'score.sv')
