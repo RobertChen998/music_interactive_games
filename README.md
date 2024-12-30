@@ -2,7 +2,8 @@
 
 ## Overview
 
-A music interatice games project
+A music interatice games project, ![click here](./team02_final_presentation.pdf) to see detail.
+
 
 # Project Overview
 
@@ -13,7 +14,7 @@ This project consists of various modules and files organized into different dire
 The system architecture is depicted in the following diagram:
 
 ![System Architecture](./system.png)
-
+ 
 ## Directory Structure
 ```
 .
