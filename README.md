@@ -8,6 +8,12 @@ A music interatice games project
 
 This project consists of various modules and files organized into different directories. Below is a brief description of each directory and its contents:
 
+# System Architecture
+
+The system architecture is depicted in the following diagram:
+
+![System Architecture](./system.png)
+
 ## Directory Structure
 ```
 .
