@@ -11,116 +11,68 @@ This project consists of various modules and files organized into different dire
 ## Directory Structure
 ```
 .
-├── image_converter.py
-├── kmeans_4bit_binary-1.bin
-├── led
-│   ├── led.v
-│   ├── led.v.bak
-│   ├── oscillator.v
-│   ├── oscillator.v.bak
-│   ├── player.v
-│   ├── player.v.bak
-│   ├── tb_ws2812b.v
-│   ├── ws2812b.v
-│   └── ws2812b.v.bak
-├── picture
-│   ├── background.jpg
-│   ├── circle.png
-│   ├── circle1.sv
-│   ├── circle1.sv.bak
-│   ├── circle2.sv
-│   ├── circle2.sv.bak
-│   ├── circle3.sv
-│   ├── circle4.sv
-│   ├── circle5.sv
-│   ├── number
-│   │   ├── 0.sv
-│   │   ├── 1.sv
-│   │   ├── 2.sv
-│   │   ├── 3.sv
-│   │   ├── 4.sv
-│   │   ├── 5.sv
-│   │   ├── 6.sv
-│   │   ├── 7.sv
-│   │   ├── 8.sv
-│   │   └── 9.sv
-│   └── score.sv
-├── pll
-│   ├── pll.bsf
-│   ├── pll.cmp
-│   ├── pll.html
-│   ├── pll.xml
-│   ├── pll_bb.v
-│   ├── pll_generation.rpt
-│   ├── pll_inst.v
-│   ├── pll_inst.vhd
-│   └── synthesis
-│       ├── pll.debuginfo
-│       ├── pll.qip
-│       ├── pll.v
-│       └── submodules
-│           ├── altera_reset_controller.sdc
-│           ├── altera_reset_controller.v
-│           ├── altera_reset_synchronizer.v
-│           └── pll_altpll_0.v
-├── readme
-├── rs232_qsys
-│   ├── rs232.bsf
-│   ├── rs232.cmp
-│   ├── rs232.html
-│   ├── rs232.xml
-│   ├── rs232_bb.v
-│   ├── rs232_generation.rpt
-│   ├── rs232_generation_previous.rpt
-│   ├── rs232_inst.v
-│   ├── rs232_inst.vhd
-│   └── synthesis
-│       ├── Chain3.cdf
-│       ├── rs232.debuginfo
-│       ├── rs232.qip
-│       ├── rs232.v
-│       └── submodules
-│           ├── RS232_wrapper.sv
-│           ├── Rsa256Core.sv
-│           ├── Rsa256Wrapper.sv
-│           ├── altera_merlin_master_translator.sv
-│           ├── altera_merlin_slave_translator.sv
-│           ├── altera_reset_controller.sdc
-│           ├── altera_reset_controller.v
-│           ├── altera_reset_synchronizer.v
-│           ├── rs232_altpll_0.v
-│           ├── rs232_mm_interconnect_0.v
-│           └── rs232_uart_0.v
-└── src
-    ├── DE2_115.sdc
-    ├── DE2_115.sdc.bak
-    ├── DE2_115.sv
-    ├── DE2_115.sv.bak
-    ├── Debounce.sv
-    ├── RS232
-    │   └── RS232_wrapper.sv
-    ├── Rsa256Core.sv
-    ├── Rsa256Wrapper.sv
-    ├── SRAM
-    │   ├── ColorDecoder.sv
-    │   ├── SramAddrEncoder.sv
-    │   └── SramDataDecoder.sv
-    ├── SevenHexDecoder.sv
-    ├── VGA
-    │   ├── background_map.sv
-    │   ├── vga.sv
-    │   ├── vga_sram.sv
-    │   └── vga_sram.sv.bak
-    ├── core.sv
-    └── position_handle.v
+├── README.md
+├── VGA
+│   ├── vga.sv
+│   └── vga_sram.sv
+├── requirements.txt
+├── src
+│   ├── README.md
+│   ├── SRAM
+│   │   ├── ColorDecoder.sv
+│   │   ├── SramAddrEncoder.sv
+│   │   └── SramDataDecoder.sv
+│   ├── core.sv
+│   ├── img
+│   │   ├── circle.png
+│   │   ├── circle.sv
+│   │   ├── circle1.sv
+│   │   ├── circle2.sv
+│   │   ├── circle3.sv
+│   │   ├── number
+│   │   │   ├── 0.sv
+│   │   │   ├── 1.sv
+│   │   │   ├── 2.sv
+│   │   │   ├── 3.sv
+│   │   │   ├── 4.sv
+│   │   │   ├── 5.sv
+│   │   │   ├── 6.sv
+│   │   │   ├── 7.sv
+│   │   │   ├── 8.sv
+│   │   │   └── 9.sv
+│   │   └── score.sv
+│   ├── led
+│   │   ├── led.v
+│   │   ├── oscillator.v
+│   │   ├── player.v
+│   │   ├── tb_ws2812b.v
+│   │   └── ws2812b.v
+│   ├── red-circle-detection.py
+│   ├── rs232_qsys
+│   │   └── synthesis
+│   │       ├── rs232.v
+│   │       └── submodules
+│   │           └── RS232_wrapper.sv
+│   ├── rsa_qsys.qip
+│   ├── rsa_qsys.v
+│   └── vga_sram.sv
+└── utils
+    ├── image_converter
+    │   ├── README.md
+    │   ├── image_converter.py
+    │   └── requirements.txt
+    └── midi transfrom.ipynb
 ```
 ## Directory Descriptions
-
-- **rs232_qsys**: Contains the Qsys files for the RS232 module.
-- **src**: Contains the RS232 wrapper, SRAM module, VGA module, and DE2115 top module.
-- **pll**: Contains PLL files.
-- **picture**: Contains picture files like symbols or scores (written in Verilog).
-- **led**: Contains the LED control module.
+- src: Contains the RS232 wrapper, SRAM module, VGA module, and DE2115 top module.
+   - **rs232_qsys**: Contains the Qsys files for the RS232 module.
+   - **sram**: Contains sram decoder/encoder file.
+   - **img**: Contains picture files like symbols or scores (written in Verilog).
+   - **led**: Contains the LED control module.
+   - **red-circle-detection.py**: red circle detection file(python)
+   - **Core.sv**: game main logic, like score calculation or symbol postion control
+- VGA: Contain VGA control file, including VGA with sram and VGA only. 
+- utils: Contain some funtion like image to sv or midi to sv.
 
 Each directory contains various Verilog and SystemVerilog files that implement the respective modules and functionalities.
 
