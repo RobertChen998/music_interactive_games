@@ -2,7 +2,7 @@
 
 ## Overview
 
-A music interatice games project, ![click here](./team02_final_presentation.pdf) to see detail.
+A music interatice games project, read team02_final_presentation.pdf) to understand our detail.
 
 
 # Project Overview
