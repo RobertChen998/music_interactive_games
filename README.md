@@ -2,8 +2,13 @@
 
 # Overview
 
-A music interatice games project, read "team02_final_presentation.pdf" to understand our detail.
-We realize: (1) 900*1600 VGA Display (2) rs232 comunicating (3) hand detection (by red points) (4) bluzer and led control 
+A music interatice games project, please read "team02_final_presentation.pdf" to understand our detail.
+
+We realize:
+(1) 900*1600 VGA Display 
+(2) rs232 comunicating 
+(3) hand detection (by red points) 
+(4) bluzzer and led control 
 
 # Project Overview
 
