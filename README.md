@@ -1,15 +1,15 @@
-## Music interatice games
+# Music interatice games
 
-## Overview
+# Overview
 
-A music interatice games project, read team02_final_presentation.pdf) to understand our detail.
-
+A music interatice games project, read "team02_final_presentation.pdf" to understand our detail.
+We realize: (1) 900*1600 VGA Display (2) rs232 comunicating (3) hand detection (by red points) (4) bluzer and led control 
 
 # Project Overview
 
 This project consists of various modules and files organized into different directories. Below is a brief description of each directory and its contents:
 
-# System Architecture
+## System Architecture
 
 The system architecture is depicted in the following diagram:
 
